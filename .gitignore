@@ -1,0 +1,69 @@
+# ======================================
+# Node & Playwright Project .gitignore
+# ======================================
+
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build and distribution
+dist/
+build/
+out/
+.tmp/
+.cache/
+
+# Playwright specific
+test-results/
+playwright-report/
+blob-report/
+report/
+.traces/
+*.zip
+
+# Environment & credentials
+.env
+.env.*
+!.env.example
+sessionState.json
+Vendor_sessionState.json
+jobsessionState.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Coverage
+coverage/
+*.lcov
+
+# Temporary data files
+data/*.json
+!data/projectData.json
+!data/lastVisitedUrl.json
+
+# Lock files (optional - comment out if you prefer to keep them)
+# package-lock.json
+# yarn.lock
+
+# Python virtual environments (if any utility scripts exist)
+venv/
+__pycache__/
+
+# GitHub Actions cache
+actions-runner/_work/
+
+# ======================================
+# End of .gitignore
+# ======================================

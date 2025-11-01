@@ -86,7 +86,9 @@ exports.ProjectJob = class ProjectJob {
 
     async selectJobType(typeText) {
         Logger.info(`Selecting Job Type: ${typeText}`);
-        await this.page.locator('span:has-text("UNIT INTERIOR")').waitFor({ state: 'visible' });
+                await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(2000);
+        await this.page.locator('span:has-text("UNIT INTERIOR")').waitFor({ state: 'visible', timeout: 10000 });
         await this.page.locator('span:has-text("UNIT INTERIOR")').dblclick();
         await this.page.waitForLoadState('networkidle');
         await this.page.waitForTimeout(2000);

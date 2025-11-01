@@ -37,16 +37,6 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # 🔐 Setup environment variables (from GitHub Secrets)
-      - name: Create .env file
-        run: |
-          echo "LOGIN_URL=${{ secrets.LOGIN_URL }}" >> .env
-          echo "DASHBOARD_URL=${{ secrets.DASHBOARD_URL }}" >> .env
-          echo "TEST_EMAIL=${{ secrets.TEST_EMAIL }}" >> .env
-          echo "TEST_PASSWORD=${{ secrets.TEST_PASSWORD }}" >> .env
-          echo "VENDOR_EMAIL=${{ secrets.VENDOR_EMAIL }}" >> .env
-          echo "VENDOR_PASSWORD=${{ secrets.VENDOR_PASSWORD }}" >> .env
-
       # ▶️ Run Playwright tests
       - name: Run Playwright tests
         run: npx playwright test --reporter=line

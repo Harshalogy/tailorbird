@@ -86,10 +86,11 @@ exports.ProjectJob = class ProjectJob {
 
     async selectJobType(typeText) {
         Logger.info(`Selecting Job Type: ${typeText}`);
-        await this.locators.jobType.waitFor({ state: 'visible' });
-        await this.locators.jobType.dblclick();
+        await this.page.locator('span:has-text("UNIT INTERIOR")').waitFor({ state: 'visible' });
+        await this.page.locator('span:has-text("UNIT INTERIOR")').dblclick();
         await this.page.waitForLoadState('networkidle');
         await this.page.waitForTimeout(2000);
+        await this.page.locator(`[data-testid="bird-table-select-dropdown"] p:has-text("${typeText}")`).waitFor({ state: 'visible' });
         await this.page.locator(`[data-testid="bird-table-select-dropdown"] p:has-text("${typeText}")`).click();
     }
 

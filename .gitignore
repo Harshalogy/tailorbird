@@ -25,9 +25,6 @@ report/
 *.zip
 
 # Environment & credentials
-.env
-.env.*
-!.env.example
 sessionState.json
 Vendor_sessionState.json
 jobsessionState.json

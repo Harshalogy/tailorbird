@@ -11,14 +11,13 @@ Install [Node.js](https://nodejs.org/) and [Visual Studio Code](https://code.vis
 ### 1. Clone the repository
 
 git clone https://github.com/Harshalogy/tailorbird.git  
- Open the Folder in Visual Code and in the terminal -> cd tailorbird 
+Open the Folder in Visual Code
 
 ### 2. Install dependencies
 npm install
 
 ### 3. Install Playwright and browsers
 npx playwright install  
-This installs all supported browsers (Chromium, Firefox, WebKit) and required drivers.
 
 ## 🧭 Running Tests
 

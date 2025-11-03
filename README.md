@@ -1,2 +1,55 @@
-# tailorbird
-Playwright_tailorbird
+# Playwright_tailorbird
+
+# 🧪 Playwright Test Automation Suite
+
+This repository contains automated end-to-end tests built using Playwright.  
+The tests are designed to validate UI functionality, user workflows, and key features across browsers. 
+
+### 🧰 Prerequisites  
+Install [Node.js](https://nodejs.org/) and [Visual Studio Code](https://code.visualstudio.com/)  
+
+Then verify installation using: `node -v` and `npm -v`
+
+### 1. Clone the repository
+
+git clone https://github.com/Harshalogy/tailorbird.git
+cd tailorbird 
+
+### 2. Install dependencies
+npm install
+
+### 3. Install Playwright and browsers
+npx playwright install
+This installs all supported browsers (Chromium, Firefox, WebKit) and required drivers.
+
+## 🧭 Running Tests
+
+### ▶ Run all tests
+
+npx playwright test
+
+### ▶ Run tests in headed mode (see browser)
+```bash
+npx playwright test --headed
+```
+### ▶ Run a specific test file
+
+npx playwright test tests/example.spec.ts
+
+### ▶ Generate and view the test report
+
+npx playwright show-report
+
+
+
+## 🧩 Project Structure
+
+```
+├── tests/                 # Playwright test scripts
+├── playwright.config.ts   # Playwright configuration file
+├── package.json           # Dependencies and npm scripts
+├── utils/                 # Utility functions and helpers
+└── README.md              # Project documentation
+```
+
+---

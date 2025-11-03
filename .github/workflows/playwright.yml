@@ -37,15 +37,20 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # ▶️ Run Playwright tests
+      # ▶️ Run Playwright tests with both console and HTML reports
       - name: Run Playwright tests
-        run: npx playwright test --reporter=line
+        run: npx playwright test --reporter="list,html"
 
-      # 📊 Upload Playwright HTML report as artifact
-      - name: Upload Playwright report
+      # 📊 Upload Playwright HTML report as artifact (always upload, even on failure)
+      - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report
           retention-days: 7
+
+      # 👀 (Optional) Print path where the report was saved
+      - name: Show report location
+        if: always()
+        run: echo "Playwright report saved in playwright-report folder"

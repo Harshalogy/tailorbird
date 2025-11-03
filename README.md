@@ -1,6 +1,6 @@
-# Playwright_tailorbird
-
 # 🧪 Playwright Test Automation Suite
+
+
 
 This repository contains automated end-to-end tests built using Playwright.  
 The tests are designed to validate UI functionality, user workflows, and key features across browsers. 

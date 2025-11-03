@@ -8,12 +8,10 @@ The tests are designed to validate UI functionality, user workflows, and key fea
 ### 🧰 Prerequisites  
 Install [Node.js](https://nodejs.org/) and [Visual Studio Code](https://code.visualstudio.com/)  
 
-Then verify installation using: `node -v` and `npm -v`
-
 ### 1. Clone the repository
 
 git clone https://github.com/Harshalogy/tailorbird.git
-cd tailorbird 
+Open the Folder in Visual Code and in the terminal -> cd tailorbird 
 
 ### 2. Install dependencies
 npm install

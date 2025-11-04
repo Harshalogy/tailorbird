@@ -177,9 +177,34 @@ class ProjectPage {
         await this.propertyDropdown.click();
         await this.page.waitForTimeout(800);
 
-        const firstOption = this.page.locator('div[data-combobox-option="true"]').first();
-        await firstOption.waitFor({ state: 'visible' });
-        await firstOption.click();
+        const dropdown = this.page.locator('[data-composed="true"][role="presentation"]');
+        await expect(dropdown).toBeVisible();
+
+        const options = dropdown.locator('[data-combobox-option="true"]');
+        const optionTexts = (await options.allTextContents()).filter(Boolean);
+
+        // Check if user passed an option value from CLI
+        // use option like this
+        // OPTION="Creekstone at RTP" npx playwright test
+
+        const cliOption = process.env.OPTION;
+
+        let selectedOption;
+        if (cliOption && optionTexts.includes(cliOption)) {
+            selectedOption = cliOption;
+            console.log(`✅ Using option from CLI: ${selectedOption}`);
+        } else {
+            // Pick random if none provided or not found
+            const randomIndex = Math.floor(Math.random() * optionTexts.length);
+            selectedOption = optionTexts[randomIndex];
+            console.log(`🎲 Randomly selected option: ${selectedOption}`);
+        }
+
+        await dropdown.getByRole('option', { name: selectedOption }).click();
+
+        // const firstOption = this.page.locator('div[data-combobox-option="true"]').first();
+        // await firstOption.waitFor({ state: 'visible' });
+        // await firstOption.click();
         Logger.info('Selected the first property from dropdown.');
 
         await this.descInput.fill(randomDescription);

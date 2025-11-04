@@ -6,7 +6,9 @@
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed ",
     "test:login": "npx playwright test tests/login.spec.js && npx playwright show-report",
-    "test:projectJob": "npx playwright test TC02 TC03"
+    "test:projectJob": "npx playwright test TC02 TC03",
+    "test:full": "npm install && npx playwright install && npx playwright test --headed",
+    "test:fullProperty": "npm install && npx playwright install && cross-env OPTION=\"Creekstone at RTP\" npx playwright test TC02 --headed"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
+    "cross-env": "^10.1.0",
     "dotenv": "^17.2.3"
   }
 }

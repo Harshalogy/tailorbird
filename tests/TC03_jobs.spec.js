@@ -28,9 +28,15 @@ test.describe('Verify Create Project and Add Job flow', () => {
     test('User should be able to navigate to existing project', async () => {
         Logger.step('Navigating to Projects...');
         await projectPage.navigateToProjects();
-        await page.waitForSelector('input[placeholder="Search..."]', { state: 'visible', timeout: 30000 });
-
+        // const searchProject= page.waitForSelector('input[placeholder="Search..."]');
+        // await searchProject.waitFor({ state: 'visible', timeout: 30000 });
+        // await searchProject.click();
         Logger.step(`Opening project "${projectData.projectName}"...`);
+        const searchProject = page.locator('input[placeholder="Search..."]');
+        await searchProject.waitFor({ state: 'visible', timeout: 30000 });
+        await searchProject.click();
+        await searchProject.fill(projectData.projectName);
+        //await page.waitForSelector('input[placeholder="Search..."]', { state: 'visible', timeout: 30000 });
         const projectCard = page.locator('.mantine-SimpleGrid-root .mantine-Group-root', {
             hasText: projectData.projectName,
         });
@@ -43,10 +49,47 @@ test.describe('Verify Create Project and Add Job flow', () => {
 
     test('User should be able to add and configure job details', async () => {
         Logger.step('Adding and editing Job...');
-        await projectJob.addJob();
-        await projectJob.editJobTitle('Mall in Noida');
-        await projectJob.selectJobType('Capex');
+        // await projectJob.addJob();
+        // await projectJob.editJobTitle('Mall in Noida');
+        // await projectJob.selectJobType('Capex');
 
+
+        const createJob = page.locator('button', { hasText: 'Create Job' });
+        await createJob.click();
+
+        const modal = page.locator('[data-modal-content="true"]');
+        await expect(modal).toBeVisible();
+
+        // Define field locators using stable attributes
+        const titleInput = page.getByPlaceholder('Enter title');
+        const jobTypeInput = page.getByPlaceholder('Select job type');
+        const descriptionInput = page.getByPlaceholder('Enter description');
+        const cancelBtn = page.getByRole('button', { name: 'Cancel' });
+        const submitBtn = page.getByRole('button', { name: /add job/i });
+
+        // Assert all fields are visible
+        await expect(titleInput).toBeVisible();
+        await expect(jobTypeInput).toBeVisible();
+        await expect(descriptionInput).toBeVisible();
+        await expect(cancelBtn).toBeVisible();
+        await expect(submitBtn).toBeVisible();
+
+        // Fill title field
+        await titleInput.fill('mall in noida');
+
+        // Select Job Type: click input, then choose 'Interior'
+        await jobTypeInput.click();
+        await page.getByRole('option', { name: /Capex/i }).click();
+
+        // Optionally verify selection
+        await expect(jobTypeInput).toHaveValue('Capex');
+
+        await submitBtn.click();
+
+
+
+
+        ;
         Logger.step('Opening Job Summary...');
         await projectJob.openJobSummary();
         await page.waitForLoadState('networkidle');
@@ -63,10 +106,12 @@ test.describe('Verify Create Project and Add Job flow', () => {
         Logger.step('Inviting Vendors...');
         await projectJob.inviteVendorsToBid();
 
-        // Scroll to bottom to load all vendors
-        await page.locator('.ag-body-viewport').last().evaluate(el => {
-            el.scrollTop = el.scrollHeight;
-        });
+        await page.locator(`.mantine-Drawer-body input[placeholder="Search..."]`).waitFor({ state: 'visible' });
+        await page.locator(`.mantine-Drawer-body input[placeholder="Search..."]`).fill('testsumit');
+        // // Scroll to bottom to load all vendors
+        // await page.locator('.ag-body-viewport').last().evaluate(el => {
+        //     el.scrollTop = el.scrollHeight;
+        // });
 
         // ✅ Invite existing vendor
         await page.locator(`.ag-pinned-left-cols-container div[role="row"]:has-text('testsumit') .ag-checkbox`).click();

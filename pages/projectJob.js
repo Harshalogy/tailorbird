@@ -100,7 +100,7 @@ exports.ProjectJob = class ProjectJob {
         Logger.step('Opening Job Summary...');
         await this.page.waitForLoadState('networkidle');
         await this.page.waitForTimeout(3000);
-        await this.locators.viewDetailsButton.click();
+        // await this.locators.viewDetailsButton.click();
         await this.locators.jobSummaryTab.click();
         await this.page.waitForLoadState('networkidle');
         await this.page.waitForTimeout(3000);

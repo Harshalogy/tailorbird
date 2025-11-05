@@ -8,7 +8,7 @@ module.exports = defineConfig({
   testDir: './tests',
   timeout: 100 * 1000,
   retries: 0,
-  workers:1,
+  workers: 1,
   reporter: [
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
@@ -22,8 +22,7 @@ module.exports = defineConfig({
     // ✅ Capture artifacts for failed tests only
     screenshot: 'only-on-failure',
 
-    // ✅ Video only for failed cases
-    video: 'retain-on-failure',
+
 
     // 🚫 Trace disabled
     trace: 'off',
@@ -35,9 +34,12 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        video: 'on', // ✅ correct placement
+      },
     },
   ],
 
-  
+
 });

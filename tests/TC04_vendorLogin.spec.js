@@ -84,7 +84,7 @@ test.describe('Tailorbird Login and Bid Acceptance Flow', () => {
             await acceptBidButtons.click();
         }
         await page.waitForLoadState('networkidle');
-
+        await page.waitForTimeout(5000);
         // ✅ Edit bid amount in total price column
         const totalCostCell = page.locator(
             'div[row-index="0"] [role="gridcell"][col-id="total_price"]'
@@ -93,7 +93,7 @@ test.describe('Tailorbird Login and Bid Acceptance Flow', () => {
 
         const costInput = page.locator('input[data-testid="bird-table-currency-input"]').first();
         await costInput.waitFor({ state: 'visible', timeout: 10000 });
-        await costInput.fill('1000');
+        await costInput.fill('2000');
     });
 
     test('User should be able to submit bid successfully', async () => {

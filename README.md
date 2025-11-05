@@ -57,11 +57,11 @@ npx playwright show-report
 ## Run these tests in Terminal
 ## 🟢 PowerShell (Windows)
 ```bash
-git clone https://github.com/Harshalogy/tailorbird.git; cd tailorbird; npm install; npx playwright install; npx playwright test --headed; npx playwright show-report
+git clone https://github.com/Harshalogy/tailorbird.git; cd tailorbird; npm install; npx playwright install chromium; npx playwright test --headed; npx playwright show-report
 ```
 ## 🟠 Command Prompt (CMD) or macOS/Linux Terminal
 ```bash
-git clone https://github.com/Harshalogy/tailorbird.git && cd tailorbird && npm install && npx playwright install && npx playwright test --headed && npx playwright show-report
+git clone https://github.com/Harshalogy/tailorbird.git && cd tailorbird && npm install && npx playwright install chromium && npx playwright test --headed && npx playwright show-report
 ```
 
 ## 📊 View Test Results (GitHub Actions)

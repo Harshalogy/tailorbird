@@ -44,6 +44,11 @@ test.describe('Tailorbird Bid Award & Contract Flow', () => {
 
     // Optional assertion (commented in your original)
     // await expect(totalCost).toHaveText(/\b[1-9]\d*\b/);
+    await page.waitForTimeout(5000);
+    const bidRow = page.locator('div[role="row"]:has-text("Bid with material")').first();
+    await expect(bidRow).toContainText('$1,000');
+    const totalRow = page.locator('div[role="row"]:has-text("Total")');
+    await expect(totalRow).toContainText('$2,000');
   });
 
   test('User should be able to manage vendors and award bid', async () => {

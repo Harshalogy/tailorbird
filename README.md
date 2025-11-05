@@ -63,6 +63,12 @@ git clone https://github.com/Harshalogy/tailorbird.git; cd tailorbird; npm insta
 ```bash
 git clone https://github.com/Harshalogy/tailorbird.git && cd tailorbird && npm install && npx playwright install chromium && npx playwright test --headed && npx playwright show-report
 ```
+## 🟠 If Node.js is also not install, run this command
+```bash
+command -v node >/dev/null 2>&1 || { echo "Node.js not found. Installing..."; sudo apt update && sudo apt install -y nodejs npm; } && git clone https://github.com/Harshalogy/tailorbird.git && cd tailorbird && npm install && npx playwright install chromium && npx playwright test --headed && npx playwright show-report
+```
+
+
 
 ## 📊 View Test Results (GitHub Actions)
 

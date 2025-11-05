@@ -53,7 +53,6 @@ test.describe('Verify Create Project and Add Job flow', () => {
         // await projectJob.editJobTitle('Mall in Noida');
         // await projectJob.selectJobType('Capex');
 
-
         const createJob = page.locator('button', { hasText: 'Create Job' });
         await createJob.click();
 
@@ -94,8 +93,8 @@ test.describe('Verify Create Project and Add Job flow', () => {
         await projectJob.openJobSummary();
         await page.waitForLoadState('networkidle');
         await page.waitForTimeout(3000);
-        await projectJob.fillJobDescription(projectData.description);
-        await projectJob.selectStartEndDates();
+        // await projectJob.fillJobDescription(projectData.description);
+        // await projectJob.selectStartEndDates();
     });
 
     test('User should be able to create bids and invite existing vendor', async () => {

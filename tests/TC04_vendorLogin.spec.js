@@ -59,6 +59,7 @@ test.describe('Tailorbird Login and Bid Acceptance Flow', () => {
         projectData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
         projectName = projectData.projectName;
 
+        await page.locator(`input[placeholder="Search..."]`).fill(projectName);
         await page.getByText(projectName, { exact: true }).click();
         await page.waitForLoadState('networkidle');
 

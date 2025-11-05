@@ -41,7 +41,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test --reporter="list,html"
 
-      # 📊 Upload Playwright HTML report as artifact (always upload, even on failure)
+      # 📊 Upload Playwright HTML report as artifact
       - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
@@ -50,7 +50,11 @@ jobs:
           path: playwright-report
           retention-days: 7
 
-      # 👀 (Optional) Print path where the report was saved
-      - name: Show report location
+      # 🌐 Deploy Playwright HTML report to GitHub Pages
+      - name: Deploy report to GitHub Pages
         if: always()
-        run: echo "Playwright report saved in playwright-report folder"
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report
+          publish_branch: gh-pages

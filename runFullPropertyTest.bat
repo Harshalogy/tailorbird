@@ -22,10 +22,17 @@ call npm install
 call npx playwright install
 
 rem === Step 3: Ask for the dropdown option dynamically ===
-set /p OPTION="Enter property name (e.g., Creekstone at RTP): "
-echo Running with OPTION=%OPTION%
+rem set /p OPTION="Enter property name (e.g., Creekstone at RTP): "
+rem echo Running with OPTION=%OPTION%
 
 rem === Step 4: Run Playwright test ===
-npx playwright test --headed
+call npx playwright test --headed
 
-pause
+rem === Step 5: Show Playwright report ===
+call npx playwright show-report
+
+rem === Keep the terminal open after execution ===
+echo ============================================
+echo All tasks completed. Press Ctrl+C to close.
+echo ============================================
+cmd /k

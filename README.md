@@ -63,3 +63,8 @@ git clone https://github.com/Harshalogy/tailorbird.git; cd tailorbird; npm insta
 ```bash
 git clone https://github.com/Harshalogy/tailorbird.git && cd tailorbird && npm install && npx playwright install && npx playwright test --headed && npx playwright show-report
 ```
+
+## 📊 View Test Results (GitHub Actions)
+
+You can view the latest Playwright HTML test reports published from GitHub Actions here:
+👉 https://harshalogy.github.io/tailorbird/

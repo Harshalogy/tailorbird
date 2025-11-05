@@ -9,22 +9,25 @@ The tests are designed to validate UI functionality, user workflows, and key fea
 Install [Node.js](https://nodejs.org/) and [Visual Studio Code](https://code.visualstudio.com/)  
 
 ### 1. Clone the repository
-
+```bash
 git clone https://github.com/Harshalogy/tailorbird.git  
+```
 Open the Folder in Visual Code
 
 ### 2. Install dependencies
+```bash
 npm install
-
+```
 ### 3. Install Playwright and browsers
+```bash
 npx playwright install  
-
+```
 ## 🧭 Running Tests
 
 ### ▶ Run all tests
-
+```bash
 npx playwright test
-
+```
 ### ▶ Run tests in headed mode (see browser)
 ```bash
 npx playwright test --headed
@@ -34,9 +37,9 @@ npx playwright test --headed
 npx playwright test tests/example.spec.ts
 
 ### ▶ Generate and view the test report
-
+```bash
 npx playwright show-report
-
+```
 
 
 ## 🧩 Project Structure
@@ -50,3 +53,13 @@ npx playwright show-report
 ```
 
 ---
+
+## Run these tests in Terminal
+## 🟢 PowerShell (Windows)
+```bash
+git clone https://github.com/Harshalogy/tailorbird.git; cd tailorbird; npm install; npx playwright install; npx playwright test --headed; npx playwright show-report
+```
+## 🟠 Command Prompt (CMD) or macOS/Linux Terminal
+```bash
+git clone https://github.com/Harshalogy/tailorbird.git && cd tailorbird && npm install && npx playwright install && npx playwright test --headed && npx playwright show-report
+```

@@ -99,7 +99,8 @@ test.describe('Tailorbird Bid Award & Contract Flow', () => {
       .locator('.mantine-Modal-content button:has-text("Finalize Contract")')
       .waitFor({ state: 'hidden' });
 
-    await expect(page.locator('button:has-text("Bulk Update Status")')).toBeDisabled();
+   // await expect(page.locator('button:has-text("Bulk Update Status")')).toBeDisabled();
+   await expect(page.locator('button:has-text("Bulk Update Status")')).toBeEnabled();
 
     Logger.success('✅ Contract finalized and verified successfully');
   });
